@@ -1,0 +1,198 @@
+<div class="col-md-12">
+  <div class="form-content">
+    <form
+      method="post"
+      id="form1"
+      class="woocommerce-form woocommerce-form-register register"
+    >
+      <p>Let's check if we deliver to your address</p>
+      <div class="form-group">
+        <label>country</label>
+        <select class="" id="bill_country" name="bill_country">
+          <option selected="">Sweden</option>
+          <option selected="">Austria</option>
+          <option selected="">Belarus</option>
+          <option selected="">Belgium</option>
+          <option selected="">Denmark</option>
+          <option selected="">Finland</option>
+          <option selected="">France</option>
+          <option selected="">Germany</option>
+          <option selected="">Iceland</option>
+          <option selected="">Italy</option>
+          <option selected="">Norway</option>
+          <option selected="">Poland</option>
+          <option selected="">Portugal</option>
+          <option selected="">Romania</option>
+          <option selected="">Russia</option>
+          <option selected="">Spain</option>
+          <option selected="">Ukraine</option>
+          <option selected="">United Kingdom (UK)</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input
+          type="email"
+          class="woocommerce-Input woocommerce-Input--text input-text"
+          id="reg_email"
+          placeholder=""
+          autocomplete="email"
+          name="user_email"
+          value=""
+        />
+      </div>
+      <div class="form-group first-tab-radio radio-button">
+        <label class="radio-inline">
+          <input
+            type="radio"
+            name="bundlefor"
+            value="private"
+            checked=""
+          />Private
+        </label>
+        <label class="radio-inline">
+          <input type="radio" value="company" name="bundlefor" />Company
+        </label>
+      </div>
+      <div class="register-message"></div>
+      <!--<input type="submit" id="register-button" form="form1" class="woocommerce-Button woocommerce-button button woocommerce-form-register__submit " name="register" value="CONTINUE" disabled="">		-->
+
+      <div id="contine-button">
+        <a class="add_to_cart_subscribe next" href="#"> CONTINUE </a>
+      </div>
+
+      <div class="terms-service">
+        <span>by continuing you agree to our</span>
+        <a href="/subscription-policy/"> <b>Terms Of Service</b> </a>
+      </div>
+    </form>
+  </div>
+</div>
+
+<style>
+  .form-content select {
+    border: none;
+    border-bottom: 2px solid;
+    border-radius: 0;
+    box-shadow: none;
+    margin-bottom: 38px;
+  }
+  .form-content input {
+    border: none;
+    border-bottom: 2px solid;
+    border-radius: 0;
+    box-shadow: none;
+    /* margin-bottom: 38px;*/
+  }
+  .form-content #register-button,
+  a.add_to_cart_subscribe,
+  a.checkout_subscribe {
+    text-align: center;
+    background: #333;
+    width: 100%;
+    display: block;
+    line-height: 49px;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+  }
+  .form-content p {
+    font-size: 16px;
+  }
+
+  .terms-service a {
+    background: no-repeat;
+    color: #000;
+  }
+  .terms-service {
+    text-align: center;
+    padding-top: 18px;
+    margin-bottom: 15px;
+  }
+
+  .radio-button {
+    margin-bottom: 27px;
+  }
+</style>
+
+<script>
+  // state
+  var emailInput = document.querySelector("#reg_email");
+
+  var radioCheckbox = document.querySelector(
+    "#form1 > div.form-group.first-tab-radio.radio-button > label:nth-child(1) > input[type=radio]"
+  );
+  var contineButton = document.querySelector("#contine-button");
+  var submitButton = document.querySelector(
+    "#wpcf7-f17727-o1 > form > p:nth-child(4) > input"
+  );
+  // function
+  function validateEmailNew(email) {
+    const re =
+      /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+  }
+
+  async function sendEmail(email) {
+    const body =
+      '------WebKitFormBoundaryDs47pvmHgPJpEkAi\r\nContent-Disposition: form-data; name="_wpcf7"\r\n\r\n17727\r\n------WebKitFormBoundaryDs47pvmHgPJpEkAi\r\nContent-Disposition: form-data; name="_wpcf7_version"\r\n\r\n5.5.6\r\n------WebKitFormBoundaryDs47pvmHgPJpEkAi\r\nContent-Disposition: form-data; name="_wpcf7_locale"\r\n\r\nen_US\r\n------WebKitFormBoundaryDs47pvmHgPJpEkAi\r\nContent-Disposition: form-data; name="_wpcf7_unit_tag"\r\n\r\nwpcf7-f17727-p17682-o1\r\n------WebKitFormBoundaryDs47pvmHgPJpEkAi\r\nContent-Disposition: form-data; name="_wpcf7_container_post"\r\n\r\n17682\r\n------WebKitFormBoundaryDs47pvmHgPJpEkAi\r\nContent-Disposition: form-data; name="_wpcf7_posted_data_hash"\r\n\r\n\r\n------WebKitFormBoundaryDs47pvmHgPJpEkAi\r\nContent-Disposition: form-data; name="your-email"\r\n\r\n' +
+      email +
+      '\r\n------WebKitFormBoundaryDs47pvmHgPJpEkAi\r\nContent-Disposition: form-data; name="_mc4wp_subscribe_contact-form-7"\r\n\r\n0\r\n------WebKitFormBoundaryDs47pvmHgPJpEkAi\r\nContent-Disposition: form-data; name="_mc4wp_subscribe_contact-form-7"\r\n\r\n1\r\n------WebKitFormBoundaryDs47pvmHgPJpEkAi--\r\n';
+
+    const res = await fetch(
+      "/wp-json/contact-form-7/v1/contact-forms/17727/feedback",
+      {
+        headers: {
+          accept: "application/json, */*;q=0.1",
+          "accept-language": "en,en-US;q=0.9,bn;q=0.8,pt;q=0.7,he;q=0.6",
+          "cache-control": "no-cache",
+          "content-type":
+            "multipart/form-data; boundary=----WebKitFormBoundaryDs47pvmHgPJpEkAi",
+          pragma: "no-cache",
+          "sec-ch-ua":
+            '".Not/A)Brand";v="99", "Google Chrome";v="103", "Chromium";v="103"',
+          "sec-ch-ua-mobile": "?0",
+          "sec-ch-ua-platform": '"macOS"',
+          "sec-fetch-dest": "empty",
+          "sec-fetch-mode": "cors",
+          "sec-fetch-site": "same-origin",
+        },
+        referrer:
+          "/subscriptions/?preview_id=17682&preview_nonce=2372b99003&preview=true",
+        referrerPolicy: "strict-origin-when-cross-origin",
+        body: body,
+        method: "POST",
+        mode: "cors",
+        credentials: "include",
+      }
+    );
+    const data = await res.json();
+    return data;
+  }
+
+  // event listener
+  contineButton.addEventListener("click", async function () {
+    if (emailInput.value.length < 1) {
+      return window.alert("email cant be Blank");
+    }
+
+    if (validateEmailNew(emailInput.value)) {
+      console.log("valid");
+    } else {
+      return window.alert("invalid email");
+    }
+
+    const res = await sendEmail(emailInput.value);
+    console.log(res);
+    console.log(res.status);
+
+    if (radioCheckbox.checked) {
+      window.location.href = "/subscription-private/";
+    } else {
+      window.location.href = "/subscription-company/";
+    }
+  });
+</script>
